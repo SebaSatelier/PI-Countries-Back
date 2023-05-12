@@ -8,8 +8,9 @@ const loadCountries = async () =>{
 
         if(!data) throw Error("not found");
 
-        data.map(async country => await Country.create({
-                id: country.cca3,
+        data.map(async country => await Country.findOrCreate({
+            where: {id : country.cca3},
+            defaults:{
                 name : country.name.common,
                 flag : country.flags[1],
                 continent : country.region,
@@ -17,6 +18,7 @@ const loadCountries = async () =>{
                 subregion : country.subregion,
                 area: country.area,
                 population: country.population
+            }
             }))
         
         return;

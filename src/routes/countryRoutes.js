@@ -6,7 +6,7 @@ const countryRoutes = Router();
 countryRoutes.get('/countries', getCountries);
 
 
-countryRoutes.get('/countries/name', getCountryByName);
+countryRoutes.get('/countries/name?', getCountryByName);
 
 countryRoutes.get('/countries/:id', getCountryById);
 

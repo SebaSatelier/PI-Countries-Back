@@ -30,7 +30,7 @@ sequelize.define('activity', {
             }
         },
     duration: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             validate: {
                 notEmpty : true
             }
@@ -39,7 +39,7 @@ sequelize.define('activity', {
         //Temporada, valida que sea una de las 4 estaciones del año.
             type: DataTypes.STRING,
             validate : {
-                isIn : [['Verano', 'Otoño', 'Invierno', 'Primavera']],
+                isIn : [['Summer', 'Autumn', 'Winter', 'Spring']],
                 notEmpty : true
             }
         }
