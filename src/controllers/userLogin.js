@@ -8,7 +8,7 @@ const userLogin = async (req, res) => {
 
         const user = await User.findOne({ where: { email: email } });
         if(!user) {
-            return res.status(404).json({error: "Usuario no encontrado"})
+            return res.status(404).json({error: "User not found"})
         }
         if(user.password !== password){
             return res.status(403).json({error: "Password incorrecto"})

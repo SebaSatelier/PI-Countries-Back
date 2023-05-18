@@ -2,6 +2,8 @@ const axios = require("axios");
 
 const {Country} = require('../db');
 
+//CONTROLADOR PARA CARGAR TODOS LOS PAISES DESDE LA API CUANDO SE INICIA EL SERVIDOR
+
 const loadCountries = async () =>{
     try{
         const {data} = await axios('https://restcountries.com/v3/all');

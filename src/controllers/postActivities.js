@@ -3,32 +3,33 @@ const { Activity, Country } = require('../db');
 const postActivity = async (req, res) => {
     const {name,dificulty, duration, season, country} = req.body
     try{
-        if(!name || !dificulty || !duration || !season) {
+        if(!name || !dificulty || !duration || !season || !country) {
             return res.status(400).json('faltan datos para poder agregar la actividad')
         }
 
-        const activity = await Activity.create({
-            name,
-            dificulty,
-            duration,
-            season
-        });
-
+        const [activity, created] = await Activity.findOrCreate({
+            where: {name : name,
+                    dificulty: dificulty,
+                    duration: duration,
+                    season: season}
+            });
+        
         if(!activity) return res.status(400).json({error : 'No se pudo agregar la actividad'});
 
-        const foundCountry = await Country.findOne({
-            where:{
-                name: country
-            }
-        });
 
-        if(!foundCountry) return res.status(400).json({error : 'No se encontro pais para agregar la actividad'});
+        const countries = await Country.findAll({
+            where: {name: country}
+        })
 
-        const createActivity = await foundCountry.addActivity(activity);
+        if (!countries || countries.length === 0) {
+            return res.status(400).json({ error: 'No se encontraron los países asociados' });
+        }
 
-        if(!createActivity) return res.status(400).json({error : 'Problemas al agregar la actividad al pais'});
+        const createActivity = await activity.addCountries(countries);
+
+        // if(!createActivity) return res.status(400).json({error : 'La actividad ya existe en los paises'});
         
-        res.status(200).json(createActivity)
+        res.status(200).json({message: "activity created successfully"})
 
     }catch(error){
         return res.status(500).json({error :error.message});

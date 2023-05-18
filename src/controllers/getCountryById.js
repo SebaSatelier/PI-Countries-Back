@@ -1,4 +1,5 @@
-const { Country } = require('../db');
+const { Country, Activity } = require('../db');
+
 
 const getCountryById = async (req, res) => {
     const {id} = req.params
@@ -6,7 +7,13 @@ const getCountryById = async (req, res) => {
     try{
         if(!id) return res.status(400).json('No se encuentra el Id')
 
-        const country = await Country.findByPk(id);
+        const country = await Country.findByPk(id,{
+            include: [{
+                model: Activity,
+                attributes: ['name'],
+            }
+            ]
+          });
 
         if(!country) return res.status(400).json({error : 'No se encuentra el pais indicado'});
         
