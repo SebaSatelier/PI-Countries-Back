@@ -11,9 +11,8 @@ const getCountries = async (req, res) => {
             }
             ]
           }); 
-        // countries = await Country.findAll();
 
-        if(!countries) return res.status(400).json({error : 'error al cargar los paises'});
+        if(!countries) return res.status(400).json({error : 'error loading countries'});
 
         res.status(200).json(countries)
 

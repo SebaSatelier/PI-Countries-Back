@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       }
     },
     flag: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       validate:{
         notEmpty : true
       }

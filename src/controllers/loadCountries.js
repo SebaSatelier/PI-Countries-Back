@@ -14,7 +14,7 @@ const loadCountries = async () =>{
             where: {id : country.cca3},
             defaults:{
                 name : country.name.common,
-                flag : country.flags[1],
+                flag : country.flags,
                 continent : country.region,
                 capital : country?.capital?.[0],
                 subregion : country.subregion,

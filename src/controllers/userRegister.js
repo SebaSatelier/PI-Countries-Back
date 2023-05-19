@@ -7,10 +7,10 @@ const userRegister = async (req, res) => {
     const {email, password} = req.body;
     try{
         if(!email || !password) {
-            return res.status(400).json({error : "Faltan datos"})
+            return res.status(400).json({error : "username and password are required"})
         }
         if(!validationEmail(email) || !validationPassword(password)) {
-            return res.status(400).json({error : "El email o password ingresado son incorrectos"})
+            return res.status(400).json({error : "email or password entered are incorrect"})
         }
         const findUser = await User.findOne({
             where : {
@@ -19,7 +19,7 @@ const userRegister = async (req, res) => {
         })
 
         if(findUser) {
-            return res.status(400).json({error : "ya hay un usuario registrado con ese Email"})
+            return res.status(400).json({error : "the username already exists"})
         }
 
         const user = await User.create({
@@ -28,11 +28,11 @@ const userRegister = async (req, res) => {
         });
 
         if(!user) {
-            return res.status(404).json({error: "Datos incorrectos"})
+            return res.status(404).json({error: "the user could not be created"})
         }
 
         
-        return res.status(200).json({user: "Usuario creado con éxito"})
+        return res.status(200).json({user: "registered user successfully"})
 
     }catch(error){
         return res.status(error.errors[0].type).json({error : error.message});

@@ -12,7 +12,9 @@ const {getCountryByName} = require('./getCountriesByName');
 const {postActivity} = require('./postActivities')
 
 
-const {getActivity} = require('./getActivities')
+const {getActivityById} = require('./getActivitiesById')
+
+const {getAllActivities} = require('./getAllActivities')
 
 
 
@@ -23,5 +25,6 @@ module.exports = {
     getCountryById,
     getCountryByName,
     postActivity,
-    getActivity
+    getActivityById,
+    getAllActivities
 }
