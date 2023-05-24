@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const {Country} = require('../db');
+const {Country} = require('../../db');
 
 //CONTROLADOR PARA CARGAR TODOS LOS PAISES DESDE LA API CUANDO SE INICIA EL SERVIDOR
 

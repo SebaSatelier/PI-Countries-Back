@@ -42,6 +42,9 @@ sequelize.define('activity', {
                 isIn : [['Summer', 'Autumn', 'Winter', 'Spring']],
                 notEmpty : true
             }
-        }
+        },
+    image:{
+            type: DataTypes.STRING
+    }
     });
 };

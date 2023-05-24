@@ -1,22 +1,36 @@
-const {userLogin} = require('./userLogin');
+//---------USER CONTROLLERS---------
 
+const {userLogin} = require('./UserControllers/userLogin');
 
-const {userRegister} = require('./userRegister');
+const {userRegister} = require('./UserControllers/userRegister');
 
-const {getCountries} = require('./getCountries');
+//---------COUNTRY CONTROLLERS---------
 
-const {getCountryById} = require('./getCountryById');
+const {getCountries} = require('./CountriesControllers/getCountries');
 
-const {getCountryByName} = require('./getCountriesByName');
+const {getCountryById} = require('./CountriesControllers/getCountryById');
 
-const {postActivity} = require('./postActivities')
+const {getCountryByName} = require('./CountriesControllers/getCountriesByName');
 
+//---------ACTIVITY CONTROLLERS---------
 
-const {getActivityById} = require('./getActivitiesById')
+const {postActivity} = require('./ActivitiesControllers/postActivities');
 
-const {getAllActivities} = require('./getAllActivities')
+const {getActivityById} = require('./ActivitiesControllers/getActivitiesById');
 
+const {getAllActivities} = require('./ActivitiesControllers/getAllActivities');
 
+const {deleteActivity} = require('./ActivitiesControllers/deleteActivity')
+
+const {updateActivity} = require('./ActivitiesControllers/updateActivity')
+
+//---------FAVORITE CONTROLLERS---------
+
+const {getFavorites} = require('./FavoritesControllers/getFavorites');
+
+const {addFavorites} = require('./FavoritesControllers/addFavorites');
+
+const {removeFavorites} = require('./FavoritesControllers/removeFavorites');
 
 module.exports = {
     userLogin,
@@ -26,5 +40,10 @@ module.exports = {
     getCountryByName,
     postActivity,
     getActivityById,
-    getAllActivities
+    getAllActivities,
+    getFavorites,
+    addFavorites,
+    removeFavorites,
+    deleteActivity,
+    updateActivity
 }

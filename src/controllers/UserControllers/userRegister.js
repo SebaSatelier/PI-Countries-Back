@@ -1,6 +1,6 @@
-const {User} = require('../db');
+const {User} = require('../../db');
 
-const {validationEmail , validationPassword} = require('../Utils/validator')
+const {validationEmail , validationPassword} = require('../../Utils/validator')
 
 
 const userRegister = async (req, res) => {

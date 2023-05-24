@@ -1,7 +1,7 @@
-const { Activity} = require('../db');
+const { Activity} = require('../../db');
 
 const getAllActivities= async (req, res) => {
-    const activities = [];
+    let activities = [];
     try{
         activities = await Activity.findAll()
 

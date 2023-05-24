@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const {userRoutes,countryRoutes,activityRoutes} = require('./routes/index.js');
+const {userRoutes,countryRoutes,activityRoutes,favoritesRoutes} = require('./routes');
 
 require('./db.js');
 
@@ -30,6 +30,8 @@ server.use('/user', userRoutes);
 server.use('/', countryRoutes);
 
 server.use('/', activityRoutes);
+
+server.use('/', favoritesRoutes)
 
 
 

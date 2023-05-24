@@ -4,6 +4,8 @@ const {countryRoutes} = require('./countryRoutes');
 
 const {activityRoutes} = require('./activityRoutes');
 
+const {favoritesRoutes} = require('./favoritesRoutes');
+
 // const router = Router();
 
 // // Configurar los routers
@@ -13,5 +15,6 @@ const {activityRoutes} = require('./activityRoutes');
 module.exports = {
     userRoutes,
     countryRoutes,
-    activityRoutes
+    activityRoutes,
+    favoritesRoutes
 }

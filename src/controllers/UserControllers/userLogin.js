@@ -1,4 +1,4 @@
-const {User} = require('../db');
+const {User} = require('../../db');
 
 
 const userLogin = async (req, res) => {
@@ -13,7 +13,7 @@ const userLogin = async (req, res) => {
         if(user.password !== password){
             return res.status(403).json({error: "wrong password"})
         }
-        return res.status(200).json({access: true, message: 'welcome back!'})
+        return res.status(200).json({access: true, userData:{id:user.id}})
 
     }catch(error){
         return res.status(error.errors[0].type).json({error : error.message});

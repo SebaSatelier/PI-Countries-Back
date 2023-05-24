@@ -1,4 +1,4 @@
-const { Activity} = require('../db');
+const { Activity} = require('../../db');
 
 const getActivityById = async (req, res) => {
     const {id} = req.params

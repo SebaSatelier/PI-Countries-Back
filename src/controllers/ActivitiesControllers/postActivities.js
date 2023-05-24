@@ -1,20 +1,21 @@
-const { Activity, Country } = require('../db');
+const { Activity, Country } = require('../../db');
 
 const postActivity = async (req, res) => {
-    const {name,dificulty, duration, season, country} = req.body
+    const {name,dificulty, duration, season, image, country} = req.body
     try{
         if(!name || !dificulty || !duration || !season || !country) {
-            return res.status(400).json('faltan datos para poder agregar la actividad')
+            return res.status(400).json('missing data to add the activity')
         }
 
         const [activity, created] = await Activity.findOrCreate({
             where: {name : name,
                     dificulty: dificulty,
                     duration: duration,
-                    season: season}
+                    season: season,
+                    image: image}
             });
         
-        if(!activity) return res.status(400).json({error : 'No se pudo agregar la actividad'});
+        if(!activity) return res.status(400).json({error : 'could not create activity'});
 
 
         const countries = await Country.findAll({
@@ -22,7 +23,7 @@ const postActivity = async (req, res) => {
         })
 
         if (!countries || countries.length === 0) {
-            return res.status(400).json({ error: 'No se encontraron los países asociados' });
+            return res.status(400).json({ error: 'one or more countries were not found' });
         }
 
         const createActivity = await activity.addCountries(countries);

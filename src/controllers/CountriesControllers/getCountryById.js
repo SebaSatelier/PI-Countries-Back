@@ -1,4 +1,4 @@
-const { Country, Activity } = require('../db');
+const { Country, Activity } = require('../../db');
 
 
 const getCountryById = async (req, res) => {
@@ -10,7 +10,7 @@ const getCountryById = async (req, res) => {
         const country = await Country.findByPk(id,{
             include: [{
                 model: Activity,
-                attributes: ['name', 'dificulty','duration','season'],
+                attributes: ['id','name', 'dificulty','duration','season'],
             }
             ]
           });
