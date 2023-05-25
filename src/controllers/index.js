@@ -12,6 +12,8 @@ const {getCountryById} = require('./CountriesControllers/getCountryById');
 
 const {getCountryByName} = require('./CountriesControllers/getCountriesByName');
 
+const {postCountry} = require('./CountriesControllers/postCountry')
+
 //---------ACTIVITY CONTROLLERS---------
 
 const {postActivity} = require('./ActivitiesControllers/postActivities');
@@ -38,6 +40,7 @@ module.exports = {
     getCountries,
     getCountryById,
     getCountryByName,
+    postCountry,
     postActivity,
     getActivityById,
     getAllActivities,

@@ -27,8 +27,6 @@ const postActivity = async (req, res) => {
         }
 
         const createActivity = await activity.addCountries(countries);
-
-        // if(!createActivity) return res.status(400).json({error : 'La actividad ya existe en los paises'});
         
         res.status(200).json({message: "activity created successfully"})
 

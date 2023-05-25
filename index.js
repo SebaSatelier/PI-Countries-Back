@@ -6,7 +6,7 @@ const {loadCountries} = require('./src/controllers/CountriesControllers/loadCoun
 
 // Syncing all the models at once.
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(PORT, () => {
     console.log(`Server listen in port ${PORT}`); // eslint-disable-line no-console
   });
